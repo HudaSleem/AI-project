@@ -1,1 +1,27 @@
 
+import pandas as pd
+import os
+
+def load_saudi_data(file_name=' Saudi-data.csv.csv'):
+    """
+    Task 1: Data Ingestion and Loading Pipeline.
+    This function reads the Saudi unemployment data and prepares it for the system.
+    """
+    try:
+        # Load the data using pandas
+        df = pd.read_csv(file_name)
+        
+        print(f"Success: Data loaded from {file_name}")
+        print(f"Dataset size: {df.shape[0]} rows and {df.shape[1]} columns")
+        
+        return df
+    except Exception as e:
+        print(f" Error during data ingestion: {e}")
+        return None
+
+if __name__ == "__main__":
+    # Test the ingestion pipeline
+    data = load_saudi_data()
+    if data is not None:
+        print("\nSample of the ingested data:")
+        print(data.head())
