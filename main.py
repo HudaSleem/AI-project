@@ -1,15 +1,12 @@
 import os
 
-print("Running Loading...")
-os.system("jupyter nbconvert --to notebook --execute Loading.ipynb")
+def run_notebook(name):
+    print(f"Running {name}...")
+    os.system(f"jupyter nbconvert --to notebook --execute {name}.ipynb")
 
-print("Running Preprocessing...")
-os.system("jupyter nbconvert --to notebook --execute Preprocessing.ipynb")
+run_notebook("Loading")
+run_notebook("Preprocessing")
+run_notebook("Training")
+run_notebook("Evaluation")
 
-print("Running Training...")
-os.system("jupyter nbconvert --to notebook --execute Training.ipynb")
-
-print("Running Evaluation...")
-os.system("jupyter nbconvert --to notebook --execute Evaluation.ipynb")
-
-print("Done")
+print("Pipeline completed successfully!")
