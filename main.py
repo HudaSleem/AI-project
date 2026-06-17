@@ -1,12 +1,18 @@
-import os
+import subprocess
 
-def run_notebook(name):
-    print(f"Running {name}...")
-    os.system(f"jupyter nbconvert --to notebook --execute {name}.ipynb")
+notebooks = [
+    "Loading.ipynb",
+    "Preprocessing.ipynb",
+    "Training.ipynb",
+    "Testing.ipynb",
+    "Evaluation.ipynb"
+]
 
-run_notebook("Loading")
-run_notebook("Preprocessing")
-run_notebook("Training")
-run_notebook("Evaluation")
+for notebook in notebooks:
+    print(f"Running {notebook}...")
+    subprocess.run(
+        ["jupyter", "nbconvert", "--to", "notebook", "--execute", notebook],
+        check=True
+    )
 
-print("Pipeline completed successfully!")
+print("All files ran successfully!")
